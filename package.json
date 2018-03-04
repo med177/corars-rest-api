@@ -1,0 +1,25 @@
+{
+  "name": "corars-rest-api",
+  "version": "1.0.0",
+  "description": "Corars Rest Api with using Node.js, Express",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "keywords": [
+    "nodejs",
+    "rest",
+    "api",
+    "corars"
+  ],
+  "author": "Mehmet ALTINEL <med177@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.16.2"
+  },
+  "devDependencies": {
+    "morgan": "^1.9.0",
+    "nodemon": "^1.17.1"
+  }
+}
