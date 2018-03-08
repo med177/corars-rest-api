@@ -7,10 +7,11 @@ const mongoose = require('mongoose');
 const productRoutes = require('./api/routes/products');
 const orderRoutes = require('./api/routes/orders');
 
-const atlasUrl = 'mongodb://med:'+process.env.MONGO_ATLAS_PWD +'@cluster0-shard-00-00-zphz1.mongodb.net:27017,cluster0-shard-00-01-zphz1.mongodb.net:27017,cluster0-shard-00-02-zphz1.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin';
-const xenUrl = 'mongodb://med:'+ process.env.MONGO_XEN_PWD +'@213.159.7.191:27017/test';
+const atlasUrl = 'mongodb://med:' + process.env.MONGO_ATLAS_PWD + '@cluster0-shard-00-00-zphz1.mongodb.net:27017,cluster0-shard-00-01-zphz1.mongodb.net:27017,cluster0-shard-00-02-zphz1.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin';
+const xenUrl = 'mongodb://med:' + process.env.MONGO_XEN_PWD + '@213.159.7.191:27017/test';
 
 mongoose.connect(atlasUrl);
+//mongoose.Promise=global.Promise;//bunun neden yazıldığını bilmiyorum bir hatanın düzeltilmesi için
 
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({ extended: false }))
