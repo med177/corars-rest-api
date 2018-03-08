@@ -144,7 +144,6 @@ router.patch('/:productId', (req, res, next) => {
 	for (const ops of req.body) { //sending body must be => [{"propName":"name", "value":"Yukarı Köy"}]
 		updateOps[ops.propName] = ops.value;
 	}
-
 	Product
 		.update({ _id: id }, { $set: updateOps }) //findByIdAndUpdate(id, { $set: { name: 'test', price: 12.99 } })
 		.exec()
