@@ -1,0 +1,6 @@
+{
+	"env": {
+		"MONGO_ATLAS_PWD": "med177",
+		"MONGO_XEN_PWD": "034188Me"
+	}
+}
