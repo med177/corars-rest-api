@@ -184,8 +184,8 @@ router.delete('/:orderId', (req, res, next) => {
 					type: 'POST',
 					url: req.protocol + '://' + req.headers.host + '/orders',
 					body: {
-						name: 'String, reguired',
-						price: 'Number, required'
+						productId: 'ID, reguired',
+						quantity: 'Number, required'
 					}
 				}
 			})
