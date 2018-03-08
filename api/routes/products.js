@@ -72,6 +72,10 @@ router.get('/:productId', (req, res, next) => {
 		.findById(id)
 		.exec()
 		.then(doc => {
+			const response ={
+				count:doc
+			}
+
 			console.log('Veritabanı\'ndan', doc);
 			if (doc) {
 				res.status(200).json(doc);
