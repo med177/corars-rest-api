@@ -8,6 +8,14 @@ const Product = require('../models/product')
 router.get('/', (req, res, next) => {
 	Order
 		.find() //.limit(100)
+		.sort('-quantity')//-descending
+		.select({ 'product': 2, 'id': 3, 'quantity': 1 })//sıralı olarak almak istediğimiz alanlar
+		.populate({
+			path: 'product', //ilgili koleksiyon
+			match: { price: { $gte: 1 } }, //eşleşme şartı price 1 den büyükse
+			select: '-_id name price', //görünecek özellikler
+			options: { limit: 5 } //seçenekler
+		})
 		.exec()
 		.then(docs => {
 			//=> arrow function kullanımı" function(s){ return s.length }  ---->  s => s.length
@@ -22,10 +30,9 @@ router.get('/', (req, res, next) => {
 					}
 				};
 			})
-
 			const response = {
 				count: docs.length,
-				orders: mapDocs
+				orders: mapDocs //docs dersek saf veri gelir
 			}
 			res.status(200).json(response)
 			/*
@@ -55,7 +62,8 @@ router.get('/:orderId', (req, res, next) => {
 	const id = req.params.orderId;
 	Order
 		.findById(id)
-		.select('-__v')//_id name price 
+		.select('-__v')//_id quantity product
+		.populate('product', 'name price')
 		.exec()
 		.then(doc => {
 			console.log('Veritabanı\'ndan', doc);
@@ -126,7 +134,7 @@ router.post('/', (req, res, next) => {
 							}
 						})
 					})
-					.catch(err=>{
+					.catch(err => {
 						console.log(err);
 						res.status(500).json({
 							error: err
