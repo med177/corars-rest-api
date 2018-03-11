@@ -13,7 +13,6 @@ const storage = multer.diskStorage({
 		cb(null, Date.now() + file.originalname)
 	}
 })
-
 const fileFilter = (req, file, cb) => {
 	if (file.mimetype === 'image/png' || file.mimetype === 'image/jpeg') {
 		cb(null, true)
@@ -21,7 +20,6 @@ const fileFilter = (req, file, cb) => {
 		cb(null, false) //cb(new Error('I don\'t have a clue!'))  -- eğer hata fırlatmak istersek.
 	}
 }
-
 const upload = multer({
 	//dest: 'uploads/',
 	storage: storage,
