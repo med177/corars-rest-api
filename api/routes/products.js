@@ -2,6 +2,35 @@ const express = require('express')
 const router = express.Router()
 const mongoose = require('mongoose')
 
+//Multer kullanımı için tanımlamalar
+const multer = require('multer')
+//const upload = multer({dest:'uploads/'}) //sadece bu şekilde de klasör oluşup dosya aktarılıyor.
+const storage = multer.diskStorage({
+	destination: (req, file, cb) => {
+		cb(null, 'uploads/')
+	},
+	filename: (req, file, cb) => {
+		cb(null, Date.now() + file.originalname)
+	}
+})
+
+const fileFilter = (req, file, cb) => {
+	if (file.mimetype === 'image/png' || file.mimetype === 'image/jpeg') {
+		cb(null, true)
+	} else {
+		cb(null, false) //cb(new Error('I don\'t have a clue!'))  -- eğer hata fırlatmak istersek.
+	}
+}
+
+const upload = multer({
+	//dest: 'uploads/',
+	storage: storage,
+	limits: {
+		fileSize: 1024 * 1024 * 5 //5mb
+	},
+	fileFilter: fileFilter
+})
+
 const Product = require('../models/product')
 
 router.get('/', (req, res, next) => {
@@ -15,6 +44,7 @@ router.get('/', (req, res, next) => {
 					id: doc._id,
 					name: doc.name,
 					price: doc.price,
+					image: doc.productImage,
 					request: {
 						type: req.method,
 						url: req.protocol + '://' + req.headers.host + req.url + 'products/' + doc._id
@@ -94,13 +124,14 @@ router.get('/:productId', (req, res, next) => {
 	*/
 });
 
-router.post('/', (req, res, next) => {
+router.post('/', upload.single('productImage'), (req, res, next) => {
+	console.log(req.file)
 	const product = new Product({
 		_id: new mongoose.Types.ObjectId(),
 		name: req.body.name,
 		price: req.body.price,
-	});
-
+		productImage: req.file.path.replace('\\','/')
+	})
 	product
 		.save()
 		.then(result => {
@@ -111,6 +142,7 @@ router.post('/', (req, res, next) => {
 					id: result._id,
 					name: result.name,
 					price: result.price,
+					image: result.productImage,
 					request: {
 						type: req.method,
 						url: req.protocol + '://' + req.headers.host + req.url + 'products/' + result._id
@@ -129,7 +161,7 @@ router.post('/', (req, res, next) => {
 		name: req.body.name,
 		price: req.body.price
 	}
-
+	
 	res.status(201).json({
 		message: '/products POST isteği geldi',
 		createdProduct: product,
@@ -175,12 +207,12 @@ router.delete('/:productId', (req, res, next) => {
 			res.status(200).json({
 				message: 'Ürün Silindi',
 				request: {
-					description:'Yeni ürün ekleme isteği',
+					description: 'Yeni ürün ekleme isteği',
 					type: 'POST',
 					url: req.protocol + '://' + req.headers.host + '/products',
-					body:{
-						name:'String, reguired',
-						price:'Number, required'
+					body: {
+						name: 'String, reguired',
+						price: 'Number, required'
 					}
 				}
 			})
