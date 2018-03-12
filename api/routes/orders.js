@@ -1,11 +1,12 @@
 const express = require('express')
 const router = express.Router()
 const mongoose = require('mongoose')
+const checkAuth = require('../middleware/check-auth')
 
 const Order = require('../models/order')
 const Product = require('../models/product')
 
-router.get('/', (req, res, next) => {
+router.get('/', checkAuth, (req, res, next) => {
 	Order
 		.find() //.limit(100)
 		.sort('-quantity')//-descending
@@ -58,7 +59,7 @@ router.get('/', (req, res, next) => {
 	*/
 });
 
-router.get('/:orderId', (req, res, next) => {
+router.get('/:orderId', checkAuth, (req, res, next) => {
 	const id = req.params.orderId;
 	Order
 		.findById(id)
@@ -103,7 +104,7 @@ router.get('/:orderId', (req, res, next) => {
 	*/
 });
 
-router.post('/', (req, res, next) => {
+router.post('/', checkAuth, (req, res, next) => {
 	//ürün id geçerli mi?
 	Product
 		.findById(req.body.productId).exec()
@@ -150,7 +151,7 @@ router.post('/', (req, res, next) => {
 		});
 });
 
-router.patch('/:orderId', (req, res, next) => {
+router.patch('/:orderId', checkAuth, (req, res, next) => {
 	const id = req.params.orderId;
 	//{name: req.body.name, price: req.body.price}//{name:'Kaldırımlar',price: 10.00}
 	const updateOps = {};
@@ -178,7 +179,7 @@ router.patch('/:orderId', (req, res, next) => {
 		});
 });
 
-router.delete('/:orderId', (req, res, next) => {
+router.delete('/:orderId', checkAuth, (req, res, next) => {
 	const id = req.params.orderId;
 	Order
 		.remove({ _id: id })
@@ -206,4 +207,4 @@ router.delete('/:orderId', (req, res, next) => {
 		});
 });
 
-module.exports = router;
+module.exports = router

@@ -4,10 +4,11 @@ const mongoose = require('mongoose')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 const fs = require('fs')
+const checkAuth = require('../middleware/check-auth')
 
 const User = require('../models/user')
 
-router.get('/', (req, res, next) => {
+router.get('/', checkAuth, (req, res, next) => {
 	User
 		.find()
 		.exec()
@@ -35,7 +36,7 @@ router.get('/', (req, res, next) => {
 		})
 });
 
-router.get('/:userId', (req, res, next) => {
+router.get('/:userId', checkAuth, (req, res, next) => {
 	const id = req.params.userId;
 	User
 		.findById(id)
@@ -136,7 +137,7 @@ router.post('/login', (req, res, next) => {
 					const token = jwt.sign(
 						data,
 						cert,
-						{ expiresIn: '1h' }
+						{ expiresIn: '1h' } //Eg: 60, "2 days", "10h", "7d"
 					)
 					return res.status(200).json({
 						message: 'Geçerli !',
@@ -147,7 +148,7 @@ router.post('/login', (req, res, next) => {
 		})
 });
 
-router.patch('/:userId', (req, res, next) => {
+router.patch('/:userId', checkAuth, (req, res, next) => {
 	const id = req.params.userId;
 	const updateOps = {};
 	for (const ops of req.body) {
@@ -174,7 +175,7 @@ router.patch('/:userId', (req, res, next) => {
 		});
 });
 
-router.delete('/:userId', (req, res, next) => {
+router.delete('/:userId', checkAuth, (req, res, next) => {
 	const id = req.params.userId;
 	User
 		.remove({ _id: id })
