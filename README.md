@@ -7,6 +7,8 @@ Uyarı: Bu döküman henüz hazır değildir !
 [![devDependencies Status](https://david-dm.org/med177/corars-rest-api/dev-status.svg)](https://david-dm.org/med177/corars-rest-api?type=dev)
 [![Coverage Status](https://img.shields.io/codecov/c/github/med177/corars-rest-api/master.svg)](https://codecov.io/github/med177/corars-rest-api?branch=master)
 
+---
+
 Bu proje Rest Api yapısında bir test projesidir, bu proje sayesinde javascript teknolojilerinin bir kısmının denenmesi amaçlanmıştır.
 
 ## Links
@@ -29,7 +31,6 @@ Terminal kullanarak nodemon ile uygulamayı başlatın. Bu kısımda `package.js
 
 ```js
 "scripts": {
-  "test": "echo \"Error: no test specified\" && exit 1",
   "start": "nodemon server.js"
 }
 ```
@@ -38,7 +39,9 @@ Terminal kullanarak nodemon ile uygulamayı başlatın. Bu kısımda `package.js
 npm start
 ```
 
+Some Markdown text with <span style="color:blue">some *blue* text</span>.
+
 Proje'nin travis üzerindeki ayarları henüz tam olarak yapılamamıştır.
 >Copyright 2018 Corars
 ---
-[![n]("http://corars.com/corars-micro.png")]
+![Image](http://corars.com/corars-micro.png)
