@@ -1,6 +1,6 @@
 # corars-rest-api
 
-Uyarı: Bu döküman henüz hazır değildir !
+__Uyarı:__ *Bu döküman henüz hazır değildir !*
 
 [![Build Status](https://travis-ci.org/med177/corars-rest-api.svg?branch=master)](https://travis-ci.org/med177/corars-rest-api)
 [![Dependency Status](https://david-dm.org/med177/corars-rest-api.svg/status.svg)](https://david-dm.org/med177/corars-rest-api)
@@ -17,7 +17,7 @@ Bu proje Rest Api yapısında bir test projesidir, bu proje sayesinde javascript
 
 ## API'nin kurulumu
 
-### 1.Node Modüllerini yükleyin
+### Node Modüllerini yükleyin
 
 Terminal kullanarak npm den modülleri yükleyin.
 
@@ -25,7 +25,7 @@ Terminal kullanarak npm den modülleri yükleyin.
 npm install
 ```
 
-### 2. Sunucu uygulamasını başlatın
+### Sunucu uygulamasını başlatın
 
 Terminal kullanarak nodemon ile uygulamayı başlatın. Bu kısımda `package.json` içinde nodemon scripti npm üzerinde tanımlanmıştır.
 
