@@ -18,7 +18,15 @@ Terminal kullanarak npm den modülleri yükleyin.
 $ npm install
 ```
 ## 2. Sunucu uygulamasını başlatın
-Terminal kullanarak nodemon ile uygulamayı başlatın. Bu kısımda `nodemon.json` nodemon scripti npm üzerinde tanımlanmıştır.
+Terminal kullanarak nodemon ile uygulamayı başlatın. Bu kısımda `package.json` içinde nodemon scripti npm üzerinde tanımlanmıştır.
+
+```js
+"scripts": {
+  "test": "echo \"Error: no test specified\" && exit 1",
+  "start": "nodemon server.js"
+}
+```
+
 ```bash
 $ npm start
 ```
