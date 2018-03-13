@@ -24,6 +24,24 @@ $ npm start
 ```
 
 
+### Sequence diagram
+
+```
+sequenceDiagram
+    participant Alice
+    participant Bob
+    Alice->>John: Hello John, how are you?
+    loop Healthcheck
+        John->>John: Fight against hypochondria
+    end
+    Note right of John: Rational thoughts <br/>prevail...
+    John-->>Alice: Great!
+    John->>Bob: How about you?
+    Bob-->>John: Jolly good!
+```
+![Sequence diagram](./img/sequence.png)
+
+
 Proje'nin travis üzerindeki ayarları henüz tam olarak yapılamamıştır.
 >Copyright 2018 Corars
 ---
