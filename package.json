@@ -15,6 +15,7 @@
     "nodejs",
     "rest",
     "api",
+    "mongodb",
     "corars"
   ],
   "author": "Mehmet ALTINEL <med177@gmail.com>",
