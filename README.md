@@ -18,28 +18,10 @@ Terminal kullanarak npm den modülleri yükleyin.
 $ npm install
 ```
 ## 2. Sunucu uygulamasını başlatın
-Terminal kullanarak nodemon ile uygulamayı başlatın. Bu kısımda nodemon scripti npm üzerinde tanımlanmıştır.
+Terminal kullanarak nodemon ile uygulamayı başlatın. Bu kısımda `nodemon.json` nodemon scripti npm üzerinde tanımlanmıştır.
 ```bash
 $ npm start
 ```
-
-
-### Sequence diagram
-
-```
-sequenceDiagram
-    participant Alice
-    participant Bob
-    Alice->>John: Hello John, how are you?
-    loop Healthcheck
-        John->>John: Fight against hypochondria
-    end
-    Note right of John: Rational thoughts <br/>prevail...
-    John-->>Alice: Great!
-    John->>Bob: How about you?
-    Bob-->>John: Jolly good!
-```
-![Sequence diagram](./img/sequence.png)
 
 
 Proje'nin travis üzerindeki ayarları henüz tam olarak yapılamamıştır.
