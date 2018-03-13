@@ -5,7 +5,7 @@ __Uyarı:__ *Bu döküman henüz hazır değildir !*
 [![Build Status](https://travis-ci.org/med177/corars-rest-api.svg?branch=master)](https://travis-ci.org/med177/corars-rest-api)
 [![Dependency Status](https://david-dm.org/med177/corars-rest-api.svg/status.svg)](https://david-dm.org/med177/corars-rest-api)
 [![devDependencies Status](https://david-dm.org/med177/corars-rest-api/dev-status.svg)](https://david-dm.org/med177/corars-rest-api?type=dev)
-[![Coverage Status](https://img.shields.io/codecov/c/github/med177/corars-rest-api/master.svg)](https://codecov.io/github/med177/corars-rest-api?branch=master)
+[![Coverage Status](https://img.shields.io/codecov/gh/github/med177/corars-rest-api/master.svg)](https://codecov.io/github/med177/corars-rest-api?branch=master)
 
 ---
 
